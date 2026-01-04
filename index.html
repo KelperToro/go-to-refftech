@@ -57,17 +57,16 @@
             window.location.replace(targetUrl); 
         }
 
+        // 1. ЗАПУСКАЕМ ТАЙМЕР СРАЗУ (БЕЗОПАСНОСТЬ)
+        setTimeout(doRedirect, 350);
+
         try {
             if (typeof ttq !== 'undefined') {
-                ttq.track('ClickButton', {}, {
-.
-                    transport: 'beacon' 
-                });
+                ttq.track('ClickButton', {}, { transport: 'beacon' });
             }
         } catch (e) {
-            console.log("Pixel blocked");
+            console.log("Pixel error, but redirect will happen anyway");
         }
-        setTimeout(doRedirect, 350);
 
     </script>
 </body>
